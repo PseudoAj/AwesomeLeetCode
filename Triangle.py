@@ -8,21 +8,23 @@ class Solution(object):
         pIdx=0
         for row in triangle:
             if(len(row)==1):
-                element=self.getMin(row,0)
+                element=row[0]
             else:
+                a=self.msort(row)
                 for j in xrange(len(row)):
-                    temp=self.getMin(row,j)
+                    temp=a[j]
                     if self.isNgh(pIdx,row.index(temp)):
                         element=temp
+                        pIdx=row.index(temp)
                         break
-            
+            print element
             sum+=element
         return sum
         
         
-    def getMin(self,row,i):
+    def getMin(self,row):
         a=self.msort(row)
-        return a[i]
+        return a
     
     def msort(self,x):
         result = []
@@ -45,9 +47,9 @@ class Solution(object):
         return result
     
     def isNgh(self,i,j):
-        if (j-1==0):
+        if (j-i==0):
             return True
-        elif(j-1==1):
+        elif(j-i==1):
             return True
         else:
             return False
