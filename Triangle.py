@@ -7,11 +7,10 @@ class Solution(object):
         sum=0
         pIdx=0
         for row in triangle:
-            i=0
-            if(i==0):
+            if(len(row)==1):
                 element=self.getMin(row,0)
             else:
-                for i in xrange(len(row)):
+                for j in xrange(len(row)):
                     temp=self.getMin(row,j)
                     if self.isNgh(pIdx,row.index(temp)):
                         element=temp
